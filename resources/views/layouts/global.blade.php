@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Larashop @yield("title")</title>
-    <link rel="stylesheet" href="{{asset('polished/polished.min.css')}}">
-    <link rel="stylesheet" href="{{asset('polished/iconic/css/open-iconic-bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('polished/polished.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('polished/iconic/css/open-iconic-bootstrap.min.css') }}">
     <style>
         .grid-highlight {
             padding-top: 1rem;
@@ -47,18 +47,17 @@
         <input class="border-dark bg-primary-darkest form-control d-none
 d-md-block w-50 ml-3 mr-2" type="text" placeholder="Search" aria- label="Search">
         <div class="dropdown d-none d-md-block">
-            @if(\Auth::user())
-            <button class="btn btn-link btn-link-primary dropdown-toggle" id="navbar-dropdown" data-toggle="dropdown">
-                {{Auth::user()->name}}
-            </button>
+            @if( \Auth::user() )
+                <button class="btn btn-link btn-link-primary dropdown-toggle" id="navbar-dropdown" data-toggle="dropdown">
+                    {{ Auth::user()->name }}
+                </button>
             @endif
-            <div class="dropdown-menu dropdown-menu-right" id="navbar-
-dropdown">
+            <div class="dropdown-menu dropdown-menu-right" id="navbar-dropdown">
                 <a href="#" class="dropdown-item">Profile</a>
                 <a href="#" class="dropdown-item">Setting</a>
                 <div class="dropdown-divider"></div>
                 <li>
-                    <form action="{{route("logout")}}" method="POST">
+                    <form action="{{ route( "logout" ) }}" method="POST">
                         @csrf
                         <button class="dropdown-item" style="cursor:pointer">Sign Out</button>
                     </form>
@@ -78,14 +77,20 @@ dropdown">
                         <a href="{{ route( 'users.index' ) }}"><span class="oi oi-people"></span> Manage Users </a>
                     </li>
                     <li>
-                        <a href="{{ route( 'categories.index' ) }}"><span class="oi oi-people"></span> Manage Categories </a>
+                        <a href="{{ route( 'categories.index' ) }}"><span class="oi oi-tag"></span> Manage Categories </a>
+                    </li>
+                    <li>
+                        <a href="{{ route( 'books.index' ) }}"><span class="oi oi-book"></span> Manage Books </a>
+                    </li>
+                    <li>
+                        <a href="{{route('orders.index')}}"><span class="oi oi-inbox"></span> Manage orders</a>
                     </li>
                     <div class="d-block d-md-none">
                         <div class="dropdown-divider"></div>
                         <li><a href="#"> Profile</a></li>
                         <li><a href="#"> Setting</a></li>
                         <li>
-                            <form action="{{route("logout")}}" method="POST">
+                            <form action="{{ route( "logout" ) }}" method="POST">
                                 @csrf
                                 <button class="dropdown-item" style="cursor:pointer">Sign Out</button>
                             </form>
@@ -101,17 +106,20 @@ dropdown">
                 <div class="row ">
                     <div class="col-md-12 pl-3 pt-2">
                         <div class="pl-3">
-                            <h3>@yield("pageTitle")</h3>
+                            <h3>@yield( "pageTitle" )</h3>
                             <br/>
                         </div> 
                     </div> 
-                </div> @yield("content") 
+                </div> @yield( "content" ) 
             </div> 
         </div> 
     </div> 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    @yield( 'footer-scripts' )
+
 </body>
 
 </html>

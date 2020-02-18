@@ -149,4 +149,24 @@ class CategoryController extends Controller
 
         return redirect()->route( 'categories.index' )->with( 'status', 'Category successfully restored' );
     }
+
+    public function deletePermanent( $id ){
+        $category = \App\Category::withTrashed()->findOrFail( $id );
+
+        if( $category->trashed() ):
+            return redirect()->route( 'categories.trash' )->with( 'status', 'Can not delete permantent active category' );
+        else:
+            $category->forceDelete();
+
+            return redirect()->route( 'categories.trash')->with( 'status', 'Category permanently deleted' );
+        endif;
+    }
+
+    public function ajaxSearch( Request $request ){
+        $keyword = $request->get( 'q' );
+        
+        $categories = \App\Category::where( "name", "LIKE", "%$keyword%" )->get();
+
+        return $categories;
+    }
 }

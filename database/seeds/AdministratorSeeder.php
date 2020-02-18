@@ -17,7 +17,7 @@ class AdministratorSeeder extends Seeder
         $administrator->email = "administrator@larashop.test";
         $administrator->roles = json_encode(["ADMIN"]);
         $administrator->password = \Hash::make("larashop");
-        $administrator->avatar = "saat-ini-tidak-ada-file.png";
+        $administrator->avatar = "";
         $administrator->address = "Sarmili, Bintaro, Tangerang Selatan";
         $administrator->phone = "0831141312";
         $administrator->save();

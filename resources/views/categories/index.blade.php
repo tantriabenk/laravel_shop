@@ -30,7 +30,7 @@
 
 <div class="row">
     <div class="col-md-12 text-right">
-        <a href="{{ route( 'categories.create' ) }}" class="btn btn-primary">Create user</a>
+        <a href="{{ route( 'categories.create' ) }}" class="btn btn-primary">Create Category</a>
     </div>
 </div>
 <br>
@@ -47,12 +47,12 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($categories as $category)
+                @foreach ( $categories as $category )
                 <tr>
-                    <td>{{$category->name}}</td>
-                    <td>{{$category->slug}}</td>
+                    <td>{{ $category->name }}</td>
+                    <td>{{ $category->slug }}</td>
                     <td>
-                        @if($category->image)
+                        @if( $category->image )
                         <img src="{{ asset('storage/' . $category->image) }}" width="48px" />
                         @else
                         No image
